@@ -7,7 +7,7 @@
 
   <% @warehouses.each do |w|%>
     <div>
-      <h3><%= link_to w.name, warehouse_path(w.id) %></h3>
+      <h3><%= link_to w.name, w %></h3>
       <dl>
         <dt>Código: </dt>
         <dd><%= w.code %></dd>

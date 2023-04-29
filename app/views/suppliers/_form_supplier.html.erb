@@ -1,0 +1,44 @@
+<% if @supplier.errors.any? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% @supplier.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @supplier do |s| %>
+  <div>
+    <%= s.label :corporate_name %>
+    <%= s.text_field :corporate_name %>
+  </div>
+    <div>
+    <%= s.label :brand_name %>
+    <%= s.text_field :brand_name %>
+  </div>
+    <div>
+    <%= s.label :registration_number %>
+    <%= s.text_field :registration_number %>
+  </div>
+    <div>
+    <%= s.label :full_address %>
+    <%= s.text_field :full_address %>
+  </div>
+    <div>
+    <%= s.label :city %>
+    <%= s.text_field :city %>
+  </div>
+    <div>
+    <%= s.label :state %>
+    <%= s.text_field :state %>
+  </div>
+    <div>
+    <%= s.label :email %>
+    <%= s.text_field :email %>
+  </div>
+    <div>
+    <%= s.submit 'Enviar' %>
+  </div>
+<% end %>
