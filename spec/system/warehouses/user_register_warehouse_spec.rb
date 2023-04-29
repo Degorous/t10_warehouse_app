@@ -62,4 +62,24 @@ describe 'Usuário cadastra um galpão' do
     expect(page).to have_content 'Cidade não pode ficar em branco'
     expect(page).to have_content 'Área não pode ficar em branco'
   end
+
+  it 'com CEP inválido' do
+    #Arrange
+
+    #Act
+    visit(root_path)
+    click_on('Cadastrar Galpão')
+    fill_in('Nome', with: 'Rio de Janeiro')
+    fill_in('Código', with: 'RIO')
+    fill_in('Cidade', with: 'Rio de Janeiro')
+    fill_in('Área', with: '32000')
+    fill_in('Endereço', with: 'Avenida do Museu do Amanhã, 1000')
+    fill_in('CEP', with: '0100-000')
+    fill_in('Descrição', with: 'Galpão da zona portuária do Rio')
+    click_on('Enviar')
+
+    #Assert
+    expect(page).to have_content('Galpão não cadastrado')
+    expect(page).to have_content('Precisa estar no formato XXXXX-XXX')
+  end
 end
