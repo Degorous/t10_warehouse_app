@@ -19,6 +19,7 @@
         <%= link_to 'Fornecedores', suppliers_path %> | 
         <%= link_to 'Modelos de Produtos', product_models_path %> |
         <%= link_to 'Registrar Pedidos', new_order_path %> |
+        <%= link_to 'Meus Pedidos', orders_path %> |
 
         <% if user_signed_in? %>
           <%= form_with url: search_orders_path, method: :get do |f| %>
