@@ -3,11 +3,15 @@ class Warehouse < ApplicationRecord
            presence: true
   validates :code, uniqueness: true
   validate :cep_checker
-end
-
-def cep_checker
-  split_cep = cep.split('-')
-  if cep.present? && (split_cep.first.size != 5 || split_cep.second.size != 3)
-    errors.add(:cep, 'Precisa estar no formato XXXXX-XXX')
+  
+  def full_description
+    "#{code} - #{name}"
+  end
+  
+  def cep_checker
+    split_cep = cep.split('-')
+    if cep.present? && (split_cep.first.size != 5 || split_cep.second.size != 3)
+      errors.add(:cep, 'Precisa estar no formato XXXXX-XXX')
+    end
   end
 end

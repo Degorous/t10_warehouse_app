@@ -11,18 +11,27 @@
 
   <body>
     <header>
-      <h1>Galpões & Estoque</h1>
+      <%= link_to root_path do %>
+        <h1>Galpões & Estoque</h1>
+      <% end %>
       <nav>
         <%= link_to 'Início', root_path %> |
         <%= link_to 'Fornecedores', suppliers_path %> | 
         <%= link_to 'Modelos de Produtos', product_models_path %> |
+        <%= link_to 'Registrar Pedidos', new_order_path %> |
+
         <% if user_signed_in? %>
-          <%= current_user.email %>
+          <%= form_with url: search_orders_path, method: :get do |f| %>
+            <%= f.label :query, 'Buscar Pedido' %>
+            <%= f.text_field :query %>
+            <%= f.submit 'Buscar' %>
+          <% end %>
+
+          <%= current_user.description %>
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Entrar', new_user_session_path %>
         <% end %>
-
       </nav>
     </header>
     <main>
