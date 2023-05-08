@@ -17,4 +17,10 @@
     <dd>
       <%= order.supplier.brand_name %>
     </dd>
+    <dt>
+      <%= Order.human_attribute_name 'status'%>:
+    </dt>
+    <dd>
+      <%= I18n.t(order.status) %>
+    </dd>
   </dl>

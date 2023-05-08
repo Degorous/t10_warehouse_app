@@ -1,6 +1,5 @@
 <h1>Detalhes do Pedido</h1>
 <h2> <%= Order.model_name.human %> <%= @order.code %> </h2>
-
 <dl>
   <dt>
     <%= Order.human_attribute_name 'warehouse_id'%>:
@@ -26,6 +25,17 @@
   <dd>
     <%= I18n.localize(@order.estimated_delivery_date) %>
   </dd>
+    <dt>
+    <%= Order.human_attribute_name 'status' %>:
+  </dt>
+  <dd>
+    <%= I18n.t(@order.status) %>
+  </dd>
 </dl>
+
+<% if @order.pending? %>
+  <%= button_to 'Marcar como ENTREGUE', delivered_order_path(@order.id), method: :post %>
+  <%= button_to 'Marcar como CANCELADO', canceled_order_path(@order.id), method: :post %>
+<%end%>
 
 <%= link_to 'Editar', edit_order_path(@order.id) %>
