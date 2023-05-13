@@ -3,7 +3,7 @@ class Warehouse < ApplicationRecord
            presence: true
   validates :code, uniqueness: true
   validate :cep_checker
-  
+  has_many :stock_products
   def full_description
     "#{code} - #{name}"
   end

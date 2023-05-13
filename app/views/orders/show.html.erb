@@ -33,6 +33,12 @@
   </dd>
 </dl>
 
+<h2>Itens do Pedido</h2>
+<%= link_to 'Adicionar Item', new_order_order_item_path(order_id: @order.id) %>
+<% @order.order_items.each do |item| %>
+  <%= item.quantity %> x <%= item.product_model.name %>
+<%end%>
+
 <% if @order.pending? %>
   <%= button_to 'Marcar como ENTREGUE', delivered_order_path(@order.id), method: :post %>
   <%= button_to 'Marcar como CANCELADO', canceled_order_path(@order.id), method: :post %>
