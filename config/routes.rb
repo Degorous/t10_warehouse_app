@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     post 'delivered', on: :member
     post 'canceled', on: :member
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :warehouses, only: [:show, :index, :create]
+    end
+  end
 end
